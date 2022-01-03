@@ -1,8 +1,8 @@
 package org.example;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,10 +13,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 public class Lesson5 {
     WebDriver driver;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         System.setProperty(
                 "webdriver.chrome.driver", "src/main/resources/chromedriver"
@@ -73,9 +75,9 @@ public class Lesson5 {
     public void testCase3() {
         driver.get("https://diary.ru");
         driver.findElement(By.linkText("Вход")).click();
-        Assert.assertNotNull(driver.findElement(By.name("LoginForm[username]")));
+        assertNotNull(driver.findElement(By.name("LoginForm[username]")));
         driver.findElement(By.name("LoginForm[username]")).sendKeys("korablevamarina");
-        Assert.assertNotNull(driver.findElement(By.id("loginform-password")));
+        assertNotNull(driver.findElement(By.id("loginform-password")));
         driver.findElement(By.id("loginform-password")).sendKeys("korablevamarina");
         driver.switchTo().frame(2);
         new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".recaptcha-checkbox-border")));
@@ -98,6 +100,6 @@ public class Lesson5 {
         driver.findElement(By.cssSelector(".i-search:nth-child(1)")).click();
         driver.findElement(By.cssSelector("form:nth-child(3) #menusearchform-sq")).sendKeys("музыка");
         driver.findElement(By.cssSelector("form:nth-child(3) .btn-plain")).click();
-        Assert.assertNotNull(driver.findElement(By.cssSelector(".gsc-result-info")));
+        assertNotNull(driver.findElement(By.cssSelector(".gsc-result-info")));
     }
 }

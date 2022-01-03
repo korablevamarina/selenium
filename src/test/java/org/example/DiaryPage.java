@@ -1,5 +1,6 @@
 package org.example;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DiaryPage {
 
+    @Getter
     private final WebDriver driver;
 
     @FindBy(css = ".i-search:nth-child(1)")
